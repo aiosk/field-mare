@@ -56,11 +56,17 @@ var app = new Vue({
             e.target.value = '';
             localStorage.setItem('todos', JSON.stringify(this.todos));
         },
+
         onEditTodo: function onEditTodo(e) {
-            e.target.innerHTML = '<input type="text" value="' + e.target.innerText + '" @keyup.enter="onSubmitEditTodo"/>';
-            e.target.querySelector('input').focus();
+            e.target.parentNode.querySelector('input').classList.remove('hide');
+            e.target.classList.add('hide');
+            e.target.parentNode.querySelector('input').focus();
         },
-        onSubmitEditTodo: function onSubmitEditTodo(e) {},
+        onSubmitEditTodo: function onSubmitEditTodo(e) {
+            e.target.parentNode.querySelector('div').classList.remove('hide');
+            e.target.classList.add('hide');
+            localStorage.setItem('todos', JSON.stringify(this.todos));
+        },
 
         onDeleteTodo: function onDeleteTodo(e) {
             var i = this.todos.findIndex(function (el) {

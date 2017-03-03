@@ -26,7 +26,10 @@
                   <input type="checkbox" :value="todo.id" :checked="todo.isDone" @change="onCheckTodo"><i class="material-icons">{{ todo.isDone ? 'check_box':'check_box_outline_blank'}}</i>
                 </label>
               </div>
-              <div class="todo__text" @dblclick="onEditTodo">{{ todo.text }}</div>
+              <div class="todo__text">
+                <div @dblclick="onEditTodo">{{ todo.text }}</div>
+                <input class="hide" type="text" v-model="todo.text" @keyup.enter="onSubmitEditTodo">
+              </div>
               <div class="todo__delete">
                 <button @click="onDeleteTodo"><i class="material-icons">clear</i></button>
               </div>
