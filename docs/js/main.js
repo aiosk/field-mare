@@ -22,6 +22,9 @@ var app = new Vue({
         }
     },
     methods: {
+        buttonActive: function buttonActive(value) {
+            return !!window.location.hash && window.location.hash.slice(1) === value;
+        },
         setFilterTodo: function setFilterTodo(value) {
             this.filterTxt = value;
             window.location.hash = '#' + value;
@@ -74,10 +77,11 @@ var app = new Vue({
             e.target.parentNode.querySelector('i.material-icons').innerHTML = e.target.checked ? 'check_box' : 'check_box_outline_blank';
             localStorage.setItem('todos', JSON.stringify(this.todos));
         },
-        onDeleteCompletedTode: function onDeleteCompletedTode(e) {
+        onDeleteCompletedTodo: function onDeleteCompletedTodo(e) {
             this.todos = this.todos.filter(function (el) {
                 return !el.isDone;
             });
+            localStorage.setItem('todos', JSON.stringify(this.todos));
         }
     }
 });

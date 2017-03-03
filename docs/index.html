@@ -37,11 +37,11 @@
       <div class="app__status">
         <div class="app__left">{{ todoLeft }}</div>
         <div class="app__filter">
-          <button @click="setFilterTodo('all')">all</button>
-          <button @click="setFilterTodo('active')">active</button>
-          <button @click="setFilterTodo('completed')">completed</button>
+          <button @click="setFilterTodo('all')" :class="{'button--active': buttonActive('all')}">all</button>
+          <button @click="setFilterTodo('active')" :class="{'button--active': buttonActive('active')}">active</button>
+          <button @click="setFilterTodo('completed')" :class="{'button--active': buttonActive('completed')}">completed</button>
         </div>
-        <div class="app__clear-completed"><a href="#" @click.prevent="onDeleteCompletedTode" :class="{'hide': filterTodo(todos,'completed').length === 0}">clear completed</a></div>
+        <div class="app__clear-completed"><a href="#" @click.prevent="onDeleteCompletedTodo" :class="{'hide': filterTodo(todos,'completed').length === 0}">clear completed</a></div>
       </div>
     </div>
     <script src="https://unpkg.com/vue"></script>

@@ -555,6 +555,9 @@ body {
       border: thin solid #cacaca;
       padding: 0.125rem 0.5rem;
       color: #8a8a8a; }
+      .app__filter button.button--active {
+        color: #fefefe;
+        background-color: #cacaca; }
   .app__clear-completed {
     width: 8rem; }
     .app__clear-completed a {
