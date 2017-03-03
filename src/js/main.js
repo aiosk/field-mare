@@ -1,5 +1,8 @@
 const app = new Vue({
     el: '#app',
+    created(){
+        this.todos = JSON.parse(!!localStorage['todos'] ? localStorage['todos'] : '[]');
+    },
     data: {
         todos: [
             // {id: 2, text: 'sample 1', isDone: true},
@@ -14,9 +17,14 @@ const app = new Vue({
         }
     },
     methods: {
+        setFilterTodo(value){
+            this.filterTxt = value;
+            window.location.hash = `#${value}`;
+        },
         filterTodo(value, status){
             // console.log(value);
             let a = value;
+            if (!!window.location.hash) this.filterTxt = window.location.hash.slice(1);
             switch (!status ? this.filterTxt : status) {
                 case 'completed':
                     a = value.filter(el=> el.isDone);
@@ -32,6 +40,7 @@ const app = new Vue({
             const maxId = Math.max.apply(Math, !!ids.length ? ids : [0]) + 1;
             this.todos.push({id: maxId, text: e.target.value, isDone: false});
             e.target.value = '';
+            localStorage.setItem('todos', JSON.stringify(this.todos))
         },
         onEditTodo(e){
             e.target.innerHTML = `<input type="text" value="${e.target.innerText}" @keyup.enter="onSubmitEditTodo"/>`;
@@ -43,11 +52,13 @@ const app = new Vue({
         onDeleteTodo: function (e) {
             const i = this.todos.findIndex(el => el.id === parseInt(e.target.closest('.todo').querySelector('input[type="checkbox"]').value));
             this.todos.splice(i, 1);
+            localStorage.setItem('todos', JSON.stringify(this.todos))
         },
         onCheckTodo(e){
             const i = this.todos.findIndex(el=> el.id === parseInt(e.target.value));
             this.todos[i].isDone = e.target.checked;
             e.target.parentNode.querySelector('i.material-icons').innerHTML = e.target.checked ? 'check_box' : 'check_box_outline_blank';
+            localStorage.setItem('todos', JSON.stringify(this.todos))
         },
         onDeleteCompletedTode(e){
             this.todos = this.todos.filter(el => !el.isDone);
