@@ -37,9 +37,9 @@
       <div class="app__status">
         <div class="app__left">{{ todoLeft }}</div>
         <div class="app__filter">
-          <button @click="filterTxt='all'">all</button>
-          <button @click="filterTxt='active'">active</button>
-          <button @click="filterTxt='completed'">completed</button>
+          <button @click="setFilterTodo('all')">all</button>
+          <button @click="setFilterTodo('active')">active</button>
+          <button @click="setFilterTodo('completed')">completed</button>
         </div>
         <div class="app__clear-completed"><a href="#" @click.prevent="onDeleteCompletedTode" :class="{'hide': filterTodo(todos,'completed').length === 0}">clear completed</a></div>
       </div>
