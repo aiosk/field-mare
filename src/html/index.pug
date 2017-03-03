@@ -1,0 +1,43 @@
+doctype
+html.no-js
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="x-ua-compatible" content="ie=edge")
+        title Todo list for training
+        meta( name="description" content="")
+        meta( name="viewport" content="width=device-width, initial-scale=1")
+
+        link( rel="apple-touch-icon" href="apple-touch-icon.png")
+
+        link(href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+        link(rel="stylesheet" href="css/main.css")
+
+        //script( src="js/vendor/modernizr-2.8.3.min.js")
+
+    body
+        #app.app
+            .app__input
+                input(type="text" placeholder="What needs to be done?" @keyup.enter="onAddTodo")
+            .app__list
+                ul
+                    li( v-for="(todo, i) in filterTodo(todos)")
+                        .todo(':class'="{'todo--done': todo.isDone}")
+                            .todo__check
+                                label.checkbox
+                                    input(type="checkbox" ':value'="todo.id" ':checked'="todo.isDone" @change="onCheckTodo")
+                                    i.material-icons {{ todo.isDone ? 'check_box':'check_box_outline_blank'}}
+                            .todo__text(@dblclick="onEditTodo") {{ todo.text }}
+                            .todo__delete()
+                                button(@click="onDeleteTodo"): i.material-icons clear
+            .app__status
+                .app__left {{ todoLeft }}
+                .app__filter
+                    button(@click="filterTxt='all'") all
+                    button(@click="filterTxt='active'") active
+                    button(@click="filterTxt='completed'") completed
+                .app__clear-completed
+                    a(href="#" @click.prevent="onDeleteCompletedTode" ':class'="{'hide': filterTodo(todos,'completed').length === 0}") clear completed
+
+        script( src="https://unpkg.com/vue")
+        script( src="js/main.js")

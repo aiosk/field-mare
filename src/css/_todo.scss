@@ -1,0 +1,53 @@
+.todo {
+    @include clearfix;
+    $size: 2rem;
+    background-color: $white;
+    padding: 0 .5rem;
+
+    &:hover {
+        .todo__delete {
+            display: block;
+        }
+    }
+
+    > div {
+        float: left;
+        padding: .5rem 0;
+    }
+    .material-icons {
+        font-size: 1.125rem;
+    }
+    @include p('e:check', 'e:delete') {
+        position: relative;
+    }
+    @include e('check') {
+        width: $size;
+        input {
+            @include element-invisible
+        }
+        i {
+            padding-top: 2px;
+        }
+    }
+    @include e('delete') {
+
+        width: $size/2;
+        display: none;
+
+        i {
+            @include absolute-center;
+        }
+    }
+
+    @include e('text') {
+        width: calc(100% - #{1.5 * $size});
+
+        @include at('done') {
+            text-decoration: line-through;
+            color: $medium-gray;
+        }
+        input {
+            width: calc(100% - 5px);
+        }
+    }
+}

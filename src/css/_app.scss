@@ -1,0 +1,67 @@
+.app {
+    @include horizontal-center;
+    width: 100%;
+    max-width: 35rem;
+    padding: 4rem 2rem;
+    @include breakpoint(medium) {
+
+    }
+    @include e('input') {
+        input {
+            padding: 1rem 2rem;
+            width: 100%;
+            border: thin solid $medium-gray;
+        }
+    }
+    @include e('list') {
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            border: thin solid $medium-gray;
+            &:not(:first-child) {
+                border-top: 0;
+            }
+        }
+
+    }
+    @include e('status') {
+        @include clearfix;
+        background-color: $white;
+        padding: 0 .5rem;
+
+        border: thin solid $medium-gray;
+        border-top: 0;
+        font-size: .75rem;
+        color: $dark-gray;
+
+        & > div {
+            float: left;
+            padding: .5rem 0;
+        }
+    }
+    @include p('e:filter', 'e:clear-completed') {
+        text-align: right
+    }
+    @include e('left') {
+        width: 6rem;
+    }
+    @include e('filter') {
+        width: calc(100% - #{8rem+6rem});
+        button {
+            border: thin solid $medium-gray;
+            $size: .125rem;
+            padding: $size 4*$size;
+            color: $dark-gray
+        }
+    }
+    @include e('clear-completed') {
+        width: 8rem;
+        a {
+            color: $dark-gray;
+            text-transform: capitalize;
+        }
+    }
+}
