@@ -33,11 +33,11 @@ html.no-js
             .app__status
                 .app__left {{ todoLeft }}
                 .app__filter
-                    button(@click="setFilterTodo('all')") all
-                    button(@click="setFilterTodo('active')") active
-                    button(@click="setFilterTodo('completed')") completed
+                    button(@click="setFilterTodo('all')" ':class'="{'button--active': buttonActive('all')}") all
+                    button(@click="setFilterTodo('active')" ':class'="{'button--active': buttonActive('active')}") active
+                    button(@click="setFilterTodo('completed')" ':class'="{'button--active': buttonActive('completed')}") completed
                 .app__clear-completed
-                    a(href="#" @click.prevent="onDeleteCompletedTode" ':class'="{'hide': filterTodo(todos,'completed').length === 0}") clear completed
+                    a(href="#" @click.prevent="onDeleteCompletedTodo" ':class'="{'hide': filterTodo(todos,'completed').length === 0}") clear completed
 
         script( src="https://unpkg.com/vue")
         script( src="js/main.js")

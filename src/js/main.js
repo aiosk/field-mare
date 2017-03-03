@@ -14,9 +14,12 @@ const app = new Vue({
         todoLeft() {
             const itemLeft = this.filterTodo(this.todos).filter(o=> !o.isDone).length;
             return `${itemLeft} item${itemLeft > 1 ? 's' : ''} left`;
-        }
+        },
     },
     methods: {
+        buttonActive(value){
+            return !!window.location.hash && window.location.hash.slice(1) === value;
+        },
         setFilterTodo(value){
             this.filterTxt = value;
             window.location.hash = `#${value}`;
@@ -60,8 +63,9 @@ const app = new Vue({
             e.target.parentNode.querySelector('i.material-icons').innerHTML = e.target.checked ? 'check_box' : 'check_box_outline_blank';
             localStorage.setItem('todos', JSON.stringify(this.todos))
         },
-        onDeleteCompletedTode(e){
+        onDeleteCompletedTodo(e){
             this.todos = this.todos.filter(el => !el.isDone);
+            localStorage.setItem('todos', JSON.stringify(this.todos))
         }
     }
 });

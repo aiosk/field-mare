@@ -54,7 +54,11 @@
             border: thin solid $medium-gray;
             $size: .125rem;
             padding: $size 4*$size;
-            color: $dark-gray
+            color: $dark-gray;
+            &.button--active {
+                color: $white;
+                background-color: $medium-gray
+            }
         }
     }
     @include e('clear-completed') {
