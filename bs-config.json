@@ -1,0 +1,17 @@
+{
+    "server": {
+        "baseDir": "./dist/"
+    },
+    "files": [
+        "./dist/**/*.{html,js,css}"
+    ],
+    "port": 8010,
+    "ui": {
+        "port": 8011
+    },
+    "reloadDelay": 500,
+    "reloadOnRestart": true,
+    "host": "0.0.0.0",
+    "injectChanges": true,
+    "open": false
+}
