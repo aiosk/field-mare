@@ -27,7 +27,9 @@ html.no-js
                                 label.checkbox
                                     input(type="checkbox" ':value'="todo.id" ':checked'="todo.isDone" @change="onCheckTodo")
                                     i.material-icons {{ todo.isDone ? 'check_box':'check_box_outline_blank'}}
-                            .todo__text(@dblclick="onEditTodo") {{ todo.text }}
+                            .todo__text
+                                div(@dblclick="onEditTodo") {{ todo.text }}
+                                input(type="text" v-model="todo.text" @keyup.enter="onSubmitEditTodo").hide
                             .todo__delete()
                                 button(@click="onDeleteTodo"): i.material-icons clear
             .app__status
