@@ -1,6 +1,15 @@
 # field-mare
 todo list for training purpose
 
+## Main source file
+* [src/html/index.pug](https://github.com/aiosk/field-mare/blob/master/src/html/index.pug)
+* [src/js/main.js](https://github.com/aiosk/field-mare/blob/master/src/js/main.js)
+* [src/css](https://github.com/aiosk/field-mare/tree/master/src/css)
+	
+
+## Demo
+visit [demo site](https://aiosk.github.io/field-mare/)
+
 ## Build
 * install [node.js](http://nodejs.org/) and [python2](https://www.python.org/)
 * download [this project](https://github.com/aiosk/field-mare/archive/master.zip) then extract to `/path/to/folder`
@@ -13,3 +22,15 @@ todo list for training purpose
 * run `npm install --python=python27` then wait until all installation complete
 * run `npm run server` 
 * open browser to `localhost:8010`
+
+## Powered by
+* [pugjs](https://pugjs.org)
+* [HTML5 Boilerplate](//html5boilerplate.com)
+* [Foundation](//foundation.zurb.com)
+* [Sass](//sass-lang.com)
+* [Gulp](//gulpjs.com)
+* [NodeJS](//nodejs.org/en/download)
+* [sass-bem](//github.com/zgabievi/sass-bem)
+* [lite-server](//github.com/johnpapa/lite-server)
+* [material design font icon](//material.io/icons)
+* [vuejs](//vuejs.org)
