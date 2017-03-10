@@ -33,9 +33,11 @@
 
         width: $size/2;
         display: none;
+        cursor: pointer;
 
         i {
             @include absolute-center;
+            cursor: pointer;
         }
     }
 
