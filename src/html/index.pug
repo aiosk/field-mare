@@ -13,31 +13,31 @@ html.no-js
         link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
         link(rel="stylesheet" href="css/main.css")
 
-        //script( src="js/vendor/modernizr-2.8.3.min.js")
-
     body
         #app.app
             .app__input
-                input(type="text" placeholder="What needs to be done?" @keyup.enter="onAddTodo")
+                todo-input(inline-template ':todos'="todos")
+                    input(type="text" placeholder="What needs to be done?" @keyup.enter="addTodo")
             .app__list
                 ul
-                    li( v-for="(todo, i) in filterTodo(todos)")
-                        .todo(':class'="{'todo--done': todo.isDone}")
-                            .todo__check
-                                label.checkbox
-                                    input(type="checkbox" ':value'="todo.id" ':checked'="todo.isDone" @change="onCheckTodo")
-                                    i.material-icons {{ todo.isDone ? 'check_box':'check_box_outline_blank'}}
-                            .todo__text
-                                div(@dblclick="onEditTodo") {{ todo.text }}
-                                input(type="text" v-model="todo.text" @keyup.enter="onSubmitEditTodo").hide
-                            .todo__delete()
-                                button(@click="onDeleteTodo"): i.material-icons clear
+                    todo-list(v-for="(todo, i) in filterTodo(todos)" ':key'="todo.id" ':todos'="todos" ':todo'="todo" ':i'="i" inline-template)
+                        li
+                            .todo(':class'="{'todo--done': todo.isDone}")
+                                .todo__check
+                                    label.checkbox
+                                        input(type="checkbox" ':value'="todo.id" ':checked'="todo.isDone" @change="onCheckTodo")
+                                        i.material-icons {{ todo.isDone ? 'check_box':'check_box_outline_blank'}}
+                                .todo__text
+                                    div(@dblclick="onEditTodo") {{ todo.text }}
+                                    input(type="text" v-model="todo.text" @keyup.enter="onSubmitEditTodo").hide
+                                .todo__delete()
+                                    button(@click="onDeleteTodo"): i.material-icons clear
             .app__status
                 .app__left {{ todoLeft }}
                 .app__filter
-                    button(@click="setFilterTodo('all')" ':class'="{'button--active': buttonActive('all')}") all
-                    button(@click="setFilterTodo('active')" ':class'="{'button--active': buttonActive('active')}") active
-                    button(@click="setFilterTodo('completed')" ':class'="{'button--active': buttonActive('completed')}") completed
+                    button(@click="setFilterTodo($event)" ':class'="{'button--active': isActive('all')}") all
+                    button(@click="setFilterTodo($event)" ':class'="{'button--active': isActive('active')}") active
+                    button(@click="setFilterTodo($event)" ':class'="{'button--active': isActive('completed')}") completed
                 .app__clear-completed
                     a(href="#" @click.prevent="onDeleteCompletedTodo" ':class'="{'hide': filterTodo(todos,'completed').length === 0}") clear completed
 

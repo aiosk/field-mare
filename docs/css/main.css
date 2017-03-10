@@ -593,7 +593,8 @@ body {
       padding-top: 2px; }
   .todo__delete {
     width: 1rem;
-    display: none; }
+    display: none;
+    cursor: pointer; }
     .todo__delete i {
       position: absolute;
       top: 50%;
@@ -601,7 +602,8 @@ body {
       -webkit-transform: translate(-50%, -50%);
       -moz-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%); }
+      transform: translate(-50%, -50%);
+      cursor: pointer; }
   .todo__text {
     width: -webkit-calc(100% - 3rem);
     width: -moz-calc(100% - 3rem);
