@@ -555,6 +555,9 @@ body {
       border: thin solid #cacaca;
       padding: 0.125rem 0.5rem;
       color: #8a8a8a; }
+      .app__filter button.button--active {
+        color: #fefefe;
+        background-color: #cacaca; }
   .app__clear-completed {
     width: 8rem; }
     .app__clear-completed a {
@@ -590,7 +593,8 @@ body {
       padding-top: 2px; }
   .todo__delete {
     width: 1rem;
-    display: none; }
+    display: none;
+    cursor: pointer; }
     .todo__delete i {
       position: absolute;
       top: 50%;
@@ -598,7 +602,8 @@ body {
       -webkit-transform: translate(-50%, -50%);
       -moz-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%); }
+      transform: translate(-50%, -50%);
+      cursor: pointer; }
   .todo__text {
     width: -webkit-calc(100% - 3rem);
     width: -moz-calc(100% - 3rem);
