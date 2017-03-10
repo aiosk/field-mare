@@ -6,11 +6,15 @@ const babel = require('gulp-babel');
 
 global.isWatching = false;
 
-const babelOpts = {presets: ['es2015']};
+const babelOpts = {
+    presets: ['es2015']
+};
 
 gulp.task('html', () => {
     return gulp.src('./src/html/**/*.pug')
-        .pipe(pug({pretty:true}))
+        .pipe(pug({
+            pretty: true
+        }))
         .pipe(gulp.dest('./dist/'))
 });
 
@@ -37,7 +41,7 @@ gulp.task('setWatch', () => {
 });
 
 
-gulp.task('default', ['setWatch'], () => {
+gulp.task('default', ['build', 'setWatch'], () => {
     gulp.watch('./src/css/**/*.scss', ['css']);
 
     gulp.watch('./src/html/**/*.pug', ['html']);

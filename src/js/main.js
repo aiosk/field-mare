@@ -10,7 +10,7 @@ const todoInput = {
 
             this.todos.push({
                 id: maxId,
-                text: e.target.value,
+                text: window.btoa(e.target.value),
                 isDone: false
             });
             e.target.value = '';
@@ -38,7 +38,7 @@ const todoList = {
         },
         onDeleteTodo: function(e) {
             const i = this.todos.findIndex(el => el.id === parseInt(e.target.closest('.todo').querySelector('input[type="checkbox"]').value));
-            this.todos.splice(i, 1);
+            this.todos.splice(i+1, 1);
 
             saveToLocalStorage(this.todos)
         },
@@ -68,7 +68,7 @@ const app = new Vue({
     },
     computed: {
         todoLeft() {
-            const itemLeft = this.filterTodo(this.todos).filter(o => !o.isDone).length;
+            const itemLeft = this.filterTodo(this.todos).filter(o => !o.isDone).length + 1;
             return `${itemLeft} item${itemLeft > 1 ? 's' : ''} left`;
         },
     },
@@ -76,7 +76,7 @@ const app = new Vue({
         filterTodo(value, status) {
             let a = value;
             if (!!window.location.hash) this.filterTxt = window.location.hash.slice(1);
-            switch (!status ? this.filterTxt : status) {
+            switch (status ? this.filterTxt : status) {
                 case 'completed':
                     a = value.filter(el => el.isDone);
                     break;
